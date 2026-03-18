@@ -4181,9 +4181,10 @@ input, select, textarea {
 }
 
 /* Left panel — dark navy instead of mint */
-[data-theme="dark"] #wrapper:before {
-	background-color: #1a1a2e;
-	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cpath d='M30 0 L60 30 L30 60 L0 30Z' fill='none' stroke='rgba(73,252,212,0.08)' stroke-width='0.5'/%3E%3C/svg%3E");
+[data-theme="dark"] #wrapper:before,
+[data-theme="dark"] #wrapper::before {
+	background-color: #1a1a2e !important;
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cpath d='M30 0 L60 30 L30 60 L0 30Z' fill='none' stroke='rgba(73,252,212,0.08)' stroke-width='0.5'/%3E%3C/svg%3E") !important;
 }
 
 /* Timeline line and dots — mint stays as accent */
@@ -4365,4 +4366,85 @@ input, select, textarea {
 /* Intro content area in dark mode */
 [data-theme="dark"] #wrapper > section.intro > .content {
 	background: #141425;
+}
+
+/* Fix: Primary button text must always be dark on mint */
+[data-theme="dark"] input[type="submit"].primary,
+[data-theme="dark"] input[type="submit"].button.primary {
+	background-color: #49fcd4;
+	color: #000000 !important;
+}
+
+[data-theme="dark"] input[type="submit"].primary:hover,
+[data-theme="dark"] input[type="submit"].button.primary:hover {
+	background-color: #93ffe7;
+}
+
+/* Dark mode mobile — ensure panel bg stays dark where needed */
+@media screen and (max-width: 768px) {
+
+	[data-theme="dark"] #wrapper:before,
+	[data-theme="dark"] #wrapper::before {
+		background-color: #1a1a2e !important;
+	}
+
+	/* Hero text — dark on mint panel */
+	[data-theme="dark"] #wrapper > section.intro > header h1 {
+		color: #000000 !important;
+	}
+
+	[data-theme="dark"] #wrapper > section.intro > header h1 + p {
+		color: rgba(0, 0, 0, 0.55) !important;
+	}
+
+	/* Arrow */
+	[data-theme="dark"] .arrow:before,
+	[data-theme="dark"] .arrow:after {
+		border-color: rgba(0, 0, 0, 0.4) !important;
+	}
+}
+
+/* Dark mode — override section headers that get mint bg on stacked layout (<=1152px) */
+@media screen and (max-width: 1152px) {
+
+	[data-theme="dark"] #wrapper > section > header h1,
+	[data-theme="dark"] #wrapper > section > header h2,
+	[data-theme="dark"] #wrapper > section > header h3 {
+		color: #000000 !important;
+	}
+
+	[data-theme="dark"] #wrapper > section > header p,
+	[data-theme="dark"] #wrapper > section.intro > header h1 + p {
+		color: rgba(0, 0, 0, 0.55) !important;
+	}
+
+	[data-theme="dark"] #wrapper > section > header .items a,
+	[data-theme="dark"] #wrapper > section > header .items span,
+	[data-theme="dark"] #wrapper > section > header .icons a {
+		color: rgba(0, 0, 0, 0.5) !important;
+	}
+
+	[data-theme="dark"] #wrapper > section > header .icons a:hover {
+		color: #000000 !important;
+	}
+
+	/* Timeline elements stay dark on mint */
+	[data-theme="dark"] #wrapper > section > header:before {
+		background: rgba(0, 0, 0, 0.15) !important;
+	}
+
+	[data-theme="dark"] #wrapper > section > header h2:before {
+		background: rgba(0, 0, 0, 0.15) !important;
+	}
+
+	[data-theme="dark"] #wrapper > section > header h2:after,
+	[data-theme="dark"] #wrapper > section:last-of-type > header:after {
+		background: rgba(0, 0, 0, 0.25) !important;
+	}
+
+	/* Arrow */
+	[data-theme="dark"] .arrow:before,
+	[data-theme="dark"] .arrow:after {
+		border-color: rgba(0, 0, 0, 0.4) !important;
+	}
 }
